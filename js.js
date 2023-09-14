@@ -1,18 +1,18 @@
-const link = document.querySelector(".link");
-console.log(link.classList);
 
-const hasActiveClass = link.classList.contains("is-active");
-console.log(`hasActiveClass - ${hasActiveClass}`);
+const registerForm = document.querySelector(".form");
 
-link.classList.add("special");
-console.log(link.classList);
+registerForm.addEventListener("submit", handleSubmit);
 
-link.classList.remove("is-active");
-console.log(link.classList);
+function handleSubmit(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const login = form.elements.login.value;
+  const password = form.elements.password.value;
+  
+  if (login === "" || password === "") {
+    return console.log("Please fill in all the fields!");
+  }
 
-link.classList.toggle("is-active");
-console.log(link.classList);
-
-link.classList.replace("special", "regular");
-console.log(link.classList);
-
+  console.log(`Login: ${login.value}, Password: ${password.value}`);
+  form.reset();
+}
